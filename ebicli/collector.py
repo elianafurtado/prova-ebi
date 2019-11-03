@@ -1,6 +1,6 @@
 import requests
 
-
+#TODO: Change it
 class Collector:
     URL = "https://www.receitaws.com.br/v1/cnpj/"
     def __init__(self, cnpj):
