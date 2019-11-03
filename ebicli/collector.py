@@ -30,10 +30,10 @@ class Collector:
 
 
 c = Collector("17895646000187")
-# print(c.get_nome())
-# print(c.get_uf())
-# print(c.get_telefone())
-# print(c.get_email())
-# print(c.get_data_de_abertura())
-# print(c.get_atividade_principal())
+print(c.get_nome())
+print(c.get_uf())
+print(c.get_telefone())
+print(c.get_email())
+print(c.get_data_de_abertura())
+print(c.get_atividade_principal())
 print(c.get_atividades_secundarias())
