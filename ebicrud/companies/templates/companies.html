@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <ul>
+      {% for company in companies%}
+        <a href="{% url 'update_company' company.id%}">
+          <li>{{ company.name }}</li>
+        </a>
+      {% endfor %}
+    </ul>
+    <a href="{% url 'create_company' %}">New company</a>
+  </body>
+</html>
