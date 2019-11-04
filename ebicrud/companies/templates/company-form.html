@@ -2,17 +2,22 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">  
     <title></title>
   </head>
   <body>
-    <h1>New Company</h1>
-    <form method="post">
-      {% csrf_token %}
-      {{ form }}
-      <button type="submit">Save</button>
-    </form>
-    {% if company %}
-      <a href="{% url 'delete_company' company.id %}">Delete</a>
-    {% endif %}
+    <div class="container">
+      <h1>New Company</h1>
+      <form method="post">
+        <div class="form-group">
+          {% csrf_token %}
+          {{ form }}      
+        </div>
+        <button class="btn btn-primary" type="submit">Save</button>
+        {% if company %}
+          <a class="btn btn-primary" href="{% url 'delete_company' company.id %}">Delete</a>
+        {% endif %}
+      </form>      
+    </div>
   </body>
 </html>

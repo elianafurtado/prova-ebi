@@ -3,49 +3,110 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">  
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <title>Companies</title>
   </head>
-  <body>
-    <ul>
-      <h1>Company Manager</h1>
-      <div class="searches">
-          <!-- Search form 
-          <div class="active-pink-3 active-pink-4 mb-4">
-              <input class="form-control" type="text" placeholder="Company" aria-label="Search">
-          </div>
-          <div class="active-purple-3 active-purple-4 mb-4">
-              <input class="form-control" type="text" placeholder="UF" aria-label="Search">
-          </div>
-
-          <div class="active-cyan-3 active-cyan-4 mb-4">
-              <input class="form-control" type="text" placeholder="Email" aria-label="Search">
-          </div>-->
-          <form class="form-inline md-form mr-auto mb-4">
-              <input class="form-control mr-sm-2" name="pesquisa" type="text" placeholder="Company" aria-label="Search">
-              <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
-            </form>
+  <body>          
+  <!-- Modal -->
+  <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Serviços</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!---->
+          <table class="table">      
+              <tbody>
+                {% for company in companies%}
+                  {% for service in company.services.all%}
+                    <tr>            
+                      <td>{{service.title}}</td>      
+                    </tr>        
+                  {% endfor %}                    
+                {% endfor %}
+              </tbody>
+            </table>  
+            <!---->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-primary">Salvar mudanças</button>
+        </div>
       </div>
-      
-      <table>
-        <thead>
+    </div>
+  </div>
+  <!-- Botão para acionar modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo">
+    Abrir modal de demonstração
+  </button>
+    <div class="container">
+      <h1>Company Manager</h1>        
+      <div class="searches">
+          <form class="form-inline md-form mr-auto mb-4">                       
+              <input class="form-control mr-sm-2" name="pesquisa" type="text" placeholder="Company" aria-label="Search">
+              <select class="form-control" id="estado" name="estado">
+                  <option selected>UF</option>
+                  <option value="AC">AC</option>
+                  <option value="AL">AL</option>
+                  <option value="AP">AP</option>
+                  <option value="AM">AM</option>
+                  <option value="BA">BA</option>
+                  <option value="CE">CE</option>
+                  <option value="DF">DF</option>
+                  <option value="ES">ES</option>
+                  <option value="GO">GO</option>
+                  <option value="MA">MA</option>
+                  <option value="MT">MT</option>
+                  <option value="MS">MS</option>
+                  <option value="MG">MG</option>
+                  <option value="PB">PB</option>
+                  <option value="PR">PR</option>
+                  <option value="PE">PE</option>
+                  <option value="PI">PI</option>
+                  <option value="RJ">RJ</option>
+                  <option value="RN">RN</option>
+                  <option value="RS">RS</option>
+                  <option value="RO">RO</option>
+                  <option value="RR">RR</option>
+                  <option value="SC">SC</option>
+                  <option value="SP">SP</option>
+                  <option value="SE">SE</option>
+                  <option value="TO">TO</option>                
+              </select>
+              <input class="form-control mr-sm-2" name="pesquisa" type="text" placeholder="Email" aria-label="Search">      
+              <button class="btn btn-success" type="submit">Search</button>
+          </form>
+      </div>   
+      <table class="table">      
+        <thead class="thead-dark">
           <tr>
             <th>Company</th>
             <th>UF</th>
             <th>Email</th>
+            <th>Services</th>
+            <th>Service Orders</th>
           </tr>
         </thead>
         <tbody>
-        {% for company in companies%}
-          <tr>            
-            <td><a href="{% url 'update_company' company.id%}">{{ company.name }}</a></td>
-            <td>{{ company.uf }}</td>
-            <td>{{ company.email }}</td>
-          </tr>        
-        {% endfor %}
+          {% for company in companies%}
+            <tr>            
+              <td><a href="{% url 'update_company' company.id%}">{{ company.name }}</a></td>
+              <td>{{ company.uf }}</td>
+              <td>{{ company.email }}</td>
+              <td>services</td>
+              <td><a href="{% url 'list_service_orders' company.id%}">Service Orders</a></td>
+            </tr>        
+          {% endfor %}
         </tbody>
-      </table>
-    </ul>
-    <a href="{% url 'create_company' %}">New company</a>
+      </table>  
+      <a class="btn btn-primary" href="{% url 'create_company' %}">New company</a>
+    </div>
   </body>
 </html>

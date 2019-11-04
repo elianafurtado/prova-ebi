@@ -46,3 +46,8 @@ def list_service_orders(request, id):
 
     return render(request,'service-orders.html',{'services_orders':services_orders})
 
+def list_services(request, id):
+    company = Company.objects.get(id=id)
+    services = company.services.all()
+
+    return render(request,'service-orders.html',{'services_orders':services_orders})
