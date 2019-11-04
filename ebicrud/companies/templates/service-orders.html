@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Companies</title>
+  </head>
+  <body>
+    <!--<ul>
+      <h1>Service Orders</h1>
+        <tbody>
+            {% for service in serv %}
+            <tr>      
+                <td>{{ service.title }}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>            
+    </ul>    -->
+    <ul>
+        <h1>Service Orders</h1>                        
+        <table>
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Company</th>
+                <th>Services</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for service_order in services_orders %}
+            <tr>            
+                <td>{{ service_order.title }}</a></td>
+                <td>{{ service_order.company }}</td>
+                {% for service in service_order.service.all %}
+                    <td>{{ service.title }}</td>
+                {% endfor %}
+            </tr>        
+            {% endfor %}
+            </tbody>
+        </table>
+    </ul>
+  </body>
+</html>

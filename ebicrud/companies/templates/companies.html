@@ -1,16 +1,50 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Companies</title>
   </head>
   <body>
     <ul>
-      {% for company in companies%}
-        <a href="{% url 'update_company' company.id%}">
-          <li>{{ company.name }}</li>
-        </a>
-      {% endfor %}
+      <h1>Company Manager</h1>
+      <div class="searches">
+          <!-- Search form 
+          <div class="active-pink-3 active-pink-4 mb-4">
+              <input class="form-control" type="text" placeholder="Company" aria-label="Search">
+          </div>
+          <div class="active-purple-3 active-purple-4 mb-4">
+              <input class="form-control" type="text" placeholder="UF" aria-label="Search">
+          </div>
+
+          <div class="active-cyan-3 active-cyan-4 mb-4">
+              <input class="form-control" type="text" placeholder="Email" aria-label="Search">
+          </div>-->
+          <form class="form-inline md-form mr-auto mb-4">
+              <input class="form-control mr-sm-2" name="pesquisa" type="text" placeholder="Company" aria-label="Search">
+              <button class="btn aqua-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
+            </form>
+      </div>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>UF</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for company in companies%}
+          <tr>            
+            <td><a href="{% url 'update_company' company.id%}">{{ company.name }}</a></td>
+            <td>{{ company.uf }}</td>
+            <td>{{ company.email }}</td>
+          </tr>        
+        {% endfor %}
+        </tbody>
+      </table>
     </ul>
     <a href="{% url 'create_company' %}">New company</a>
   </body>
