@@ -1,16 +1,22 @@
 from django.shortcuts import render, redirect
 from .models import Company, ServiceOrder
-from .forms import CompanyForm
+from .forms import CompanyForm, SearchModelForm, ServiceOrderModelForm
 
 def list_companies(request):
-    for_search = request.GET.get('pesquisa', None)
-
-    if for_search:
-        companies = Company.objects.all()
-        companies = companies.filter(name=for_search)
+    form = SearchModelForm(request.POST)
+    
+    if form.is_valid():
+        companies = Company.objects.all()        
+        if form.cleaned_data['name']:
+            companies = companies.filter(name=form.cleaned_data['name'])
+        if form.cleaned_data['uf']:
+            companies = companies.filter(uf=form.cleaned_data['uf'])
+        if form.cleaned_data['email']:
+            companies = companies.filter(email=form.cleaned_data['email'])
     else:
         companies = Company.objects.all()
-    return render(request,'companies.html',{'companies':companies})
+
+    return render(request,'companies.html',{'companies':companies, 'form':form})
 
 def create_company(request):
     form = CompanyForm(request.POST or None)
@@ -41,13 +47,14 @@ def delete_company(request, id):
     return render(request,'company-delete-confirm.html',{'company':company})
 
 def list_service_orders(request, id):
-    services_orders = ServiceOrder.objects.all()
-    services_orders = services_orders.filter(company_id=id)
-
+    services_orders = ServiceOrder.objects.all().filter(company_id=id)    
     return render(request,'service-orders.html',{'services_orders':services_orders})
 
-def list_services(request, id):
-    company = Company.objects.get(id=id)
-    services = company.services.all()
+def create_service_order(request):
+    form = ServiceOrderModelForm(request.POST or None)
 
-    return render(request,'service-orders.html',{'services_orders':services_orders})
+    if form.is_valid():
+        form.save()
+        return redirect('list_companies')
+
+    return render(request,'service-orders-form.html',{'form':form})

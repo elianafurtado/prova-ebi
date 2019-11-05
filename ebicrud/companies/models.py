@@ -1,4 +1,5 @@
 from django.db import models
+from localflavor.br.br_states import STATE_CHOICES
 
 class Service(models.Model):
     title = models.CharField(max_length=100)
@@ -9,8 +10,9 @@ class Service(models.Model):
 
 class Company(models.Model):
     name = models.CharField(max_length=100)
-    uf = models.CharField(max_length=2)
-    email = models.CharField(max_length=100)
+    uf = models.CharField(max_length=2, choices=STATE_CHOICES, null=True, blank=True)
+    email = models.EmailField(max_length=100)
+    #change to service
     services = models.ManyToManyField(Service, blank=True)
 
     def __str__(self):
@@ -19,7 +21,7 @@ class Company(models.Model):
 class ServiceOrder(models.Model):
     title = models.CharField(max_length=100)
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
-    service = models.ManyToManyField(Service)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
