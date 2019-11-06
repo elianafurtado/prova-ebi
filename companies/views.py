@@ -6,13 +6,16 @@ def list_companies(request):
     form = SearchModelForm(request.POST)
     
     if form.is_valid():
-        companies = Company.objects.all()        
-        if form.cleaned_data['name']:
-            companies = companies.filter(name__icontains=form.cleaned_data['name'])
-        if form.cleaned_data['uf']:
-            companies = companies.filter(uf=form.cleaned_data['uf'])
-        if form.cleaned_data['email']:
-            companies = companies.filter(email__icontains=form.cleaned_data['email'])
+        #companies = Company.objects.all()        
+        companies = Company.objects.filter(
+            name__icontains=form.cleaned_data['name'],
+            uf__icontains=form.cleaned_data['uf'],
+            email__icontains=form.cleaned_data['email']
+            )
+        #if form.cleaned_data['uf']:
+        #    companies = companies.filter(uf=form.cleaned_data['uf'])
+        #if form.cleaned_data['email']:
+        #    companies = companies.filter(email__icontains=form.cleaned_data['email'])
     else:
         companies = Company.objects.all()
 
