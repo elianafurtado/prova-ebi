@@ -23,3 +23,4 @@ Na pasta do repositório execute:
 - `pip3 install -r requirements.txt` Para instalar as dependências do projeto.
 - `python3 manage.py runserver` para executar a aplicação.
 
+![cli](img/home.png)
