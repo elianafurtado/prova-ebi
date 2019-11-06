@@ -8,11 +8,11 @@ def list_companies(request):
     if form.is_valid():
         companies = Company.objects.all()        
         if form.cleaned_data['name']:
-            companies = companies.filter(name=form.cleaned_data['name'])
+            companies = companies.filter(name__icontains=form.cleaned_data['name'])
         if form.cleaned_data['uf']:
             companies = companies.filter(uf=form.cleaned_data['uf'])
         if form.cleaned_data['email']:
-            companies = companies.filter(email=form.cleaned_data['email'])
+            companies = companies.filter(email__icontains=form.cleaned_data['email'])
     else:
         companies = Company.objects.all()
 
