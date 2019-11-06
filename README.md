@@ -4,16 +4,15 @@
 
 Abaixo contém as três partes da prova com suas respectivas aplicações e instruções de uso:
 
-- [Parte 1](https://github.com/LeonardoFurtado/prova-ebi/blob/master/README.md#parte-1) : 
-Use a biblioteca requests para consumir api da receitaws com o método GET  e exiba no console os seguintes campos:
+- [Parte 1](https://github.com/LeonardoFurtado/prova-ebi/blob/master/README.md#parte-1): Use a biblioteca requests para consumir api da receitaws com o método GET  e exiba no console os seguintes campos:
 
-- atividade_principal
-- atividades_secundarias
-- nome
-- uf
-- telefone
-- email
-- data de abertura
+  - atividade_principal
+  - atividades_secundarias
+  - nome
+  - uf
+  - telefone
+  - email
+  - data de abertura
 
 - [Parte 2](https://github.com/LeonardoFurtado/prova-ebi/blob/master/README.md#parte-2) : 
 Utilize a biblioteca React.js ( https://pt-br.reactjs.org/ ) para criar uma interface simples que efetue as mesmas tarefas da Parte 1, através de um navegador web. É necessário informar ao usuário caso o CNPJ seja inválido.
