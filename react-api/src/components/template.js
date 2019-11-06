@@ -4,47 +4,48 @@ const Template = ({ dados }) => {
     return (
         <div>                        
             < div className="table-responsive" >
-                <table class="table table-striped table-result">
+                <table className="table table-striped table-result">
                     <thead>
                         <tr>
-                            <th colspan="4">Nome</th>
+                            <th colSpan="4">Nome</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td colspan="4">{dados.nome}</td>
+                            <td colSpan="4">{dados.nome}</td>
                         </tr>
                     </tbody>
 
                     <thead>
                         <tr>                            
-                            <th colspan="1" class="ten wide">
+                            <th colSpan="1" className="ten wide">
                                 Abertura</th>
-                            <th colspan="1" class="six wide">
+                            <th colSpan="1" className="six wide">
                                 Email</th>
-                            <th colspan="1" class="six wide">
+                            <th colSpan="1" className="six wide">
                                 Telefone</th>
-                            <th colspan="1" class="two wide">
+                            <th colSpan="1" className="two wide">
                                 UF</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td colspan="1">{dados.abertura}</td>
-                            <td colspan="1">{dados.email}</td>
-                            <td colspan="1">{dados.telefone}</td>
-                            <td colspan="1">{dados.uf}</td>
+                            <td colSpan="1">{dados.abertura}</td>
+                            <td colSpan="1">{dados.email}</td>
+                            <td colSpan="1">{dados.telefone}</td>
+                            <td colSpan="1">{dados.uf}</td>
                             
                         </tr>
                     </tbody>
+
                     <thead>
                         <tr>
-                            <th colspan="4">Atividade Principal</th>
+                            <th colSpan="4">Atividade Principal</th>
                         </tr>
                         <tr>
-                            <th colspan="1" class="two wide">
+                            <th colSpan="1" className="two wide">
                                 Código</th>
-                            <th colspan="3">Descrição</th>
+                            <th colSpan="3">Descrição</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,30 +53,31 @@ const Template = ({ dados }) => {
                             {
                                 dados.atividade_principal.map(atividade =>
                                     <tr>
-                                        <td colspan="1">{atividade.code}</td>
-                                        <td colspan="3">{atividade.text}</td>
+                                        <td colSpan="1">{atividade.code}</td>
+                                        <td colSpan="3">{atividade.text}</td>
                                         <hr />
                                     </tr>
                                 )
                             }
                         
                     </tbody>
+                    
                     <thead>
                         <tr>
-                            <th colspan="4">Atividades Secundarias</th>
+                            <th colSpan="4">Atividades Secundarias</th>
                         </tr>
                         <tr>
-                            <th colspan="1" class="two wide">
+                            <th colSpan="1" className="two wide">
                                 Código</th>
-                            <th colspan="3">Descrição</th>
+                            <th colSpan="3">Descrição</th>
                         </tr>
                     </thead>
                     <tbody>                        
                             {
                                 dados.atividades_secundarias.map(atividade =>
                                     <tr>
-                                        <td colspan="1">{atividade.code}</td>
-                                        <td colspan="3">{atividade.text}</td>
+                                        <td colSpan="1">{atividade.code}</td>
+                                        <td colSpan="3">{atividade.text}</td>
                                         <hr />
                                     </tr>
                                 )
