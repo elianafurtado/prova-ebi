@@ -1,6 +1,5 @@
 import requests
 
-#TODO: Change it
 class Collector:
     URL = "https://www.receitaws.com.br/v1/cnpj/"
     def __init__(self, cnpj):
@@ -28,12 +27,14 @@ class Collector:
     def get_data_de_abertura(self):
         return self.request["abertura"]
 
+if __name__ == '__main__':
+    cnpj = input('informe um cnpj:')
+    c = Collector(cnpj)
+    print("Nome: ", c.get_nome())
+    print("\nUF: ", c.get_uf())
+    print("\nTelefone: ", c.get_telefone())
+    print("\nEmail: ", c.get_email())
+    print("\nData de abertura: ", c.get_data_de_abertura())
+    print("\nAtividade principal: ", c.get_atividade_principal())
+    #print("\nAtividades Secundarias: ", c.get_atividades_secundarias())
 
-c = Collector("17895646000187")
-print(c.get_nome())
-print(c.get_uf())
-print(c.get_telefone())
-print(c.get_email())
-print(c.get_data_de_abertura())
-print(c.get_atividade_principal())
-print(c.get_atividades_secundarias())
