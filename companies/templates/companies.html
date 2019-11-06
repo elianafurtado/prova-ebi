@@ -18,7 +18,7 @@
         <div class="container row">
         {% bootstrap_form form layout='inline'%}
         <button class="btn btn-primary btn-sm" type="submit">Search</button>
-        </div>                
+      </div>                
       </form>       
 
       <table class="table">      
@@ -74,6 +74,7 @@
       </table>  
       <a class="btn btn-primary" href="{% url 'create_company' %}">New company</a>
       <a class="btn btn-primary" href="{% url 'create_service' %}">New service</a>
+      <a class="btn btn-primary" href="{% url 'create_service_order' %}">New Service Order</a>
     </div>
 
 

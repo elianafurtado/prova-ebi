@@ -7,7 +7,7 @@
     {% bootstrap_css %}
   </head>
   <body>
-    <form method="post">
+    <form class="container center_div" method="post">
       {% csrf_token %}
       <h2>Are You sure you want to remove {{ company.name}}</h2>
       <button class="btn btn-danger"type="submit" name="button">Confirm</button>
