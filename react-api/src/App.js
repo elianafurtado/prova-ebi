@@ -3,6 +3,7 @@ import Template from './components/template'
 
 export default class Terceiro extends Component {
     state = {
+        loaded: false,
         cnpj: "",        
         dados: { atividades_secundarias: [], atividade_principal : []}
     }
@@ -20,19 +21,21 @@ export default class Terceiro extends Component {
         fetch(endpoint+doc)
             .then(res => res.json())
             .then((data) => {
-                this.setState({ dados: data })
+                this.setState({ dados: data, loaded: true})
             })
             .catch(console.log)
     }
     render() {
         const { cnpj } = this.state
         return (
-            <div className="container text-center">          
-                <h1>Consultar CNPJ</h1>               
-                <input type="text" placeholder="CNPJ" value={cnpj} onChange={this.setCnpj} />
-                <button className="btn btn-primary btn-sm" onClick={this.realizarConsulta}>Buscar</button>
-                <hr />                
-                <Template dados={this.state.dados}/>
+            <div className="container">
+                <div className="text-center">
+                    <h1>Consultar CNPJ</h1>
+                    <input type="text" placeholder="CNPJ" value={cnpj} onChange={this.setCnpj} />
+                    <button className="btn btn-primary btn-sm" onClick={this.realizarConsulta}>Buscar</button>
+                </div>                                                 
+                <hr />
+                {this.state.loaded ? (<Template dados={this.state.dados} />) : null}                
             </div>
         )
     }    

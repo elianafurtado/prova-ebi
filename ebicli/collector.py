@@ -11,7 +11,7 @@ class Collector:
         return self.request["atividade_principal"][0]['text']
 
     def get_atividades_secundarias(self):
-        for item in self.requ   est["atividades_secundarias"]:
+        for item in self.request["atividades_secundarias"]:
             print(item['text'])
     def get_nome(self):
         return self.request["nome"]
