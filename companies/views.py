@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Company, ServiceOrder
-from .forms import CompanyForm, SearchModelForm, ServiceOrderModelForm
+from .forms import CompanyForm, SearchModelForm, ServiceOrderModelForm, ServiceModelForm
 
 def list_companies(request):
     form = SearchModelForm(request.POST)
@@ -58,3 +58,12 @@ def create_service_order(request):
         return redirect('list_companies')
 
     return render(request,'service-orders-form.html',{'form':form})
+
+def create_service(request):
+    form = ServiceModelForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('list_companies')
+
+    return render(request, 'service-form.html', {'form':form})

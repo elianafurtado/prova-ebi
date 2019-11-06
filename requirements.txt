@@ -4,5 +4,3 @@ django-bootstrap4
 django-localflavor
 whitenoise
 gunicorn
-psycopg2==2.8.4
-django_heroku
