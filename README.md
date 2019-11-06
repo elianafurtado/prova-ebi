@@ -8,6 +8,9 @@ Abaixo contém as três partes da prova com suas respectivas aplicações e inst
 
 Use a biblioteca requests para consumir api da receitaws com o método GET
 
+No diretório ![ebicli](https://github.com/LeonardoFurtado/prova-ebi/tree/master/ebicli) basta executar `python3 collector.py` e um CNPJ será requisitado:
+[cli](img/cli.png)
+
 #### Parte 2
 
 A resolução desta parte está no seguinte repositorio: ![receitaws-react](https://github.com/LeonardoFurtado/receitaws-react)
