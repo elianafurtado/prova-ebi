@@ -6,7 +6,7 @@ Abaixo contém as três partes da prova com suas respectivas aplicações e inst
 
 - Parte 1
 - Parte 2
-- !(Parte 3)[https://github.com/LeonardoFurtado/prova-ebi/blob/master/README.md#parte-3]
+- ![Parte 3](https://github.com/LeonardoFurtado/prova-ebi/blob/master/README.md#parte-3)
 
 
 #### Parte 1
