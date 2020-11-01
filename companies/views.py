@@ -52,21 +52,3 @@ def delete_company(request, id):
 def list_service_orders(request, id):
     services_orders = ServiceOrder.objects.all().filter(company_id=id)    
     return render(request,'service-orders.html',{'services_orders':services_orders})
-
-def create_service_order(request):
-    form = ServiceOrderModelForm(request.POST or None)
-
-    if form.is_valid():
-        form.save()
-        return redirect('list_companies')
-
-    return render(request,'service-orders-form.html',{'form':form})
-
-def create_service(request):
-    form = ServiceModelForm(request.POST or None)
-
-    if form.is_valid():
-        form.save()
-        return redirect('list_companies')
-
-    return render(request, 'service-form.html', {'form':form})
