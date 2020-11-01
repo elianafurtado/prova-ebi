@@ -22,7 +22,3 @@ class SearchModelForm(forms.Form):
     uf = forms.ChoiceField(choices=STATE_CHOICES, required=False, initial={None: '----'})
     email = forms.EmailField(max_length=100, required=False)
 
-class ServiceModelForm(forms.ModelForm):
-    class Meta:
-        model = Service
-        fields = ['title']
